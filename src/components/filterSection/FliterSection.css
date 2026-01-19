@@ -1,0 +1,87 @@
+/* 전체 영역 */
+.filter-section {
+  padding: 16px;
+  border-bottom: 1px solid #e5e7eb;
+  display: flex
+}
+
+/* 그룹 단위 */
+.filter-group {
+  margin-bottom: 20px;
+ 
+  
+}
+
+.filter-group1{
+    display: inline-block;
+    margin: auto;   
+}
+
+.filter-group2{
+    display: inline-block;
+    margin: auto;
+}
+
+/* 제목 */
+.filter-title {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+/* 버튼 컨테이너 */
+.filter-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* 기본 버튼 */
+.filter-btn {
+  padding: 8px 14px;
+  font-size: 13px;
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+  background-color: #ffffff;
+  color: #374151;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+/* hover */
+.filter-btn:hover {
+  border-color: #9ca3af;
+}
+
+/* 선택된 버튼 */
+.filter-btn.active {
+  background-color: #111827;
+  color: #ffffff;
+  border-color: #111827;
+}
+
+/* 메뉴 추천받기 버튼 */
+.recommend-btn {
+  width: 100%;
+  margin-top: 24px;
+  padding: 12px 0;
+  font-size: 15px;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  background-color: #2563eb;
+  color: #ffffff;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+/* hover */
+.recommend-btn:hover {
+  background-color: #1d4ed8;
+}
+
+/* 비활성화 상태 */
+.recommend-btn:disabled {
+  background-color: #9ca3af;
+  cursor: not-allowed;
+}
