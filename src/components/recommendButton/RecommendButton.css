@@ -1,0 +1,48 @@
+/* src/components/RecommendButton.css */
+.recommend-btn {
+  /* 이미지 파란 버튼과 동일 스타일 */
+  width: 100%;
+  max-width: 240px;
+  height: 45px;
+  padding: 0 24px;
+  
+  /* 배경 그라데이션 (파랑 계열) */
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  
+  /* 텍스트 스타일 */
+  color: white;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.4;
+  
+  /* 둥근 모서리 */
+  border-radius: 12px;
+  border: none;
+  
+  /* 그림자 (입체감) */
+  box-shadow: 
+    0 4px 12px rgba(102, 126, 234, 0.4),
+    0 2px 4px rgba(0, 0, 0, 0.1);
+  
+  /* 호버 효과 */
+  transition: all 0.2s ease;
+  
+  cursor: pointer;
+}
+
+.recommend-btn:hover {
+  /* 호버시 살짝 위로 + 밝아짐 */
+  transform: translateY(-2px);
+  box-shadow: 
+    0 8px 20px rgba(102, 126, 234, 0.5),
+    0 4px 8px rgba(0, 0, 0, 0.15);
+  background: linear-gradient(135deg, #5a6fd8 0%, #6a4190 100%);
+}
+
+.recommend-btn:active {
+  transform: translateY(0);
+  box-shadow: 
+    0 2px 8px rgba(102, 126, 234, 0.3),
+    0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
