@@ -7,7 +7,7 @@ import RcmdCard from "./components/recommendCard/RecommendationCard.jsx";
 import DisLike from "./components/dislikedMenuSection/DislikedMenuSection.jsx";
 
 export default function App() {
-  // ------------- [카테고리 및 상황 선택 컴포 관련 코드] -------------
+  // ------------- [카테고리 및 상황 선택 컴포 관련 코드: 김영웅] -------------
   const [category, setCategory] = useState([
     { id: 0, food: "한식" },
     { id: 1, food: "중식" },
@@ -21,7 +21,11 @@ export default function App() {
     { id: 3, food: "야식" },
   ]);
 
-  // ------------- [싫어하는 음식 선택 컴포 관련 코드] -------------
+  // ------------- [추천결과 카드 컴포넌트 관련 코드] : 김상윤] -------------
+
+  // ------------- [추천 버튼 컴포 관련 코드: 박재현] ------------- 
+
+  // ------------- [싫어하는 음식 선택 컴포 관련 코드: 홍인석] -------------
   const [disFood, setDisFood] = useState([
     { id: 0, food: "낫또" },
     { id: 1, food: "고수" },
