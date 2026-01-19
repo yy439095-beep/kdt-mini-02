@@ -1,19 +1,11 @@
-import { useState } from "react";
 import "./FliterSection.css";
 
-const CATEGORIES = ["한식", "중식", "일식", "양식"];
-const SITUATIONS = ["혼밥", "회식", "데이트", "야식"];
-
-function FilterSection({ setFilter }) {
-  const [selectedCategory, setSelectedCategory] = useState("");
-  const [selectedSituation, setSelectedSituation] = useState("");
-
-  const handleRecommend = () => {
-    setFilter({
-      category: selectedCategory,
-      situation: selectedSituation,
-    });
-  };
+export default function FilterSection({ foodCategoryList, situationList, category, situation, setCategory, setSituation }) 
+{
+  const CATEGORIES = foodCategoryList.map((item)=>item.food);
+  const SITUATIONS = situationList.map((item)=>item.food);
+  // console.log("CATEGORIES: " + CATEGORIES);
+  // console.log("SITUATIONS: " + SITUATIONS);
 
   return (
     <section className="filter-section">
@@ -25,9 +17,12 @@ function FilterSection({ setFilter }) {
             <button
               key={id}
               className={`filter-btn ${
-                selectedCategory === id ? "active" : ""
+                category === id ? "active" : ""
               }`}
-              onClick={() => setSelectedCategory(id)}
+              onClick={() => {
+                setCategory(id); 
+                // console.log(id);
+              }}
             >
               {id}
             </button>
@@ -43,9 +38,12 @@ function FilterSection({ setFilter }) {
             <button
               key={id}
               className={`filter-btn ${
-                selectedSituation === id ? "active" : ""
+                situation === id ? "active" : ""
               }`}
-              onClick={() => setSelectedSituation(id)}
+              onClick={() => {
+                setSituation(id); 
+                // console.log(id);
+              }}
             >
               {id}
             </button>
@@ -56,5 +54,3 @@ function FilterSection({ setFilter }) {
     </section>
   );
 }
-
-export default FilterSection;

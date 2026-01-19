@@ -20,25 +20,24 @@ export default function App() {
     { id: 2, food: "데이트" },
     { id: 3, food: "야식" },
   ];
-  const [category, setCategory] = useState(null);
-  const [situation, setSituation] = useState(null);
+  const [category, setCategory] = useState("");
+  const [situation, setSituation] = useState("");
 
   // ------------- [추천결과 카드 컴포넌트 관련 코드] : 김상윤] -------------
 
   // ------------- [추천 버튼 컴포 관련 코드: 박재현] ------------- 
-  const [rcmdMenu, setRcmdMenu] = useState(null);
 
   // ------------- [추천 버튼 으로 싫어하는 음식리스트, 카테고리, 상황 정보 넘기는 로직 : 이승규] -------------
-  const [tempList, setTempList] = useState(null);
+  const [tempList, setTempList] = useState("");
   
   const handleTempList = () => {
-    const payload = {
-      category: category,
-      situation: situation,
-      disFood: disFood,
+    const foodRequest = {
+      category,
+      situation,
+      disFood: disFood.map(item => item.food),
     };
-    console.log(payload);
-    setTempList(payload);
+    setTempList(foodRequest);
+    return foodRequest;
   };
 
   // ------------- [싫어하는 음식 선택 컴포 관련 코드: 홍인석] -------------
@@ -59,14 +58,16 @@ export default function App() {
   return (
     <div className="App">
       <Filter
+        foodCategoryList={foodCategoryList}
+        situationList={situationList}
         category={category}
         situation={situation}
         setCategory={setCategory}
         setSituation={setSituation}
       />
-      <RcmdBtn tempList={tempList} handleTempList={handleTempList} />
-      <RcmdCard rcmdMenu={rcmdMenu} onDislike={handleDislike} />
-      <DisLike disFood={disFood} setDisFood={setDisFood} />
+      <RcmdBtn tempList={tempList} handleTempList={handleTempList}/>
+      <RcmdCard/>
+      <DisLike disFood={disFood} setDisFood={setDisFood}/>
     </div>
   );
 }

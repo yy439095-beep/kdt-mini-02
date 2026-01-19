@@ -4,6 +4,7 @@ import "./DislikedMenuSection.css";
 export default function DislikedMenuSection({ disFood, setDisFood }) {
   const [input, setInput] = useState("");
 
+  // 싫어하는 음식 리스트에 추가하는 함수
   const addDislikedFood = () => {
     const value = input.trim();
     if (!value) return;
@@ -14,8 +15,7 @@ export default function DislikedMenuSection({ disFood, setDisFood }) {
       return;
     }
 
-    const nextId =
-      disFood.length === 0 ? 0 : Math.max(...disFood.map((v) => v.id)) + 1;
+    const nextId = disFood.length === 0 ? 0 : Math.max(...disFood.map((v) => v.id)) + 1;
 
     setDisFood([...disFood, { id: nextId, food: value }]);
     setInput("");
