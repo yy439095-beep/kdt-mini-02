@@ -1,3 +1,4 @@
+
 .App {
     min-height: 100vh;
     display: flex;
@@ -5,5 +6,11 @@
     align-items: center;
     gap: 24px;
     padding-top: 40px;
-    background: #f5f5f5;
+
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+        url('./components/dislikedMenuSection/bg.png');
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
