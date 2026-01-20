@@ -1,57 +1,80 @@
 .dislike {
-    margin-top: 20px;
-    padding: 16px;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    background: #fafafa;
+    width: 420px;
+    padding: 24px;
+    border-radius: 12px;
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    font-family: "Noto Sans KR", sans-serif;
 }
 
 .dislike-title {
-    margin-bottom: 12px;
-    font-size: 18px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    color: #333;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 12px;
+    margin-bottom: 16px;
 }
 
 .dislike-empty {
+    text-align: center;
     color: #777;
+    margin: 24px 0;
 }
 
 .dislike-list {
     list-style: none;
     padding: 0;
-    margin-bottom: 12px;
+    margin: 0 0 20px 0;
 }
 
 .dislike-item {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 6px 4px;
+    padding: 8px 4px;
     border-bottom: 1px solid #eee;
+    font-size: 15px;
+    color: #333;
 }
 
 .dislike-remove {
     border: none;
     background: none;
-    color: #d9534f;
+    color: #ff4d4f;
     font-size: 16px;
     cursor: pointer;
 }
 
 .dislike-remove:hover {
-    color: #b52b27;
+    opacity: 0.7;
 }
 
 .dislike-add {
     display: flex;
-    gap: 6px;
+    gap: 8px;
 }
 
 .dislike-input {
     flex: 1;
-    padding: 6px 8px;
+    padding: 10px 12px;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    font-size: 14px;
 }
 
 .dislike-btn {
-    padding: 6px 12px;
+    padding: 10px 18px;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    background: #f7f7f7;
+    color: #333;
     cursor: pointer;
+    font-size: 14px;
+}
+
+.dislike-btn:hover {
+    background: #eee;
 }
