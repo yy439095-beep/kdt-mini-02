@@ -1,5 +1,5 @@
-import './App.css';
-import { useState } from 'react';
+import "./App.css";
+import { useState } from "react";
 
 import Filter from "./components/filterSection/FilterSection.jsx";
 import RcmdBtn from "./components/recommendButton/RecommendButton.jsx";
@@ -25,31 +25,40 @@ export default function App() {
   const [category, setCategory] = useState("");
   const [situation, setSituation] = useState("");
 
-  // ------------- [추천 버튼 컴포 관련 코드: 박재현] ------------- 
+  // ------------- [추천 버튼 컴포 관련 코드: 박재현] -------------
 
   // ------------- [ : 이승규] -------------
-  
+
   // 추천 버튼 으로 싫어하는 음식리스트, 카테고리, 상황 정보 넘기는 로직
   const [tempList, setTempList] = useState("");
   const handleTempList = () => {
     const foodRequest = {
       category,
       situation,
-      disFood: disFood.map(item => item.food),
+      disFood: disFood.map((item) => item.food),
     };
     setTempList(foodRequest);
     return foodRequest;
   };
 
   // ------------- [추천결과 카드 컴포넌트 관련 코드] : 김상윤] -------------
-  const menus = ["마라탕", "치킨", "피자", "라면", "초밥", "햄버거", "국밥"];
-  const getRandomMenu = () => {
-    const idx = Math.floor(Math.random() * menus.length);
-    return menus[idx];
-  };
-  const[menu, setMenu] = useState(getRandomMenu);
+  // 추천 결과 배열
+  const [recommended, setRecommended] = useState([]);
+
+  // 현재 카드에 보여줄 메뉴
+  const [menu, setMenu] = useState("");
+
+  // RecommendButton에서 추천된 리스트를 받을 함수
+  const handleRecommend = (list) => {
+    setRecommended(list);
+  const rand = Math.floor(Math.random() * list.length);
+  setMenu(list[rand].name); // 추천 결과 중 랜덤 하나
+};
+
   const randomMenu = () => {
-    setMenu(getRandomMenu());
+    if (recommended.length === 0) return;
+    const rand = recommended[Math.floor(Math.random() * recommended.length)];
+    setMenu(rand.name);
   };
 
   // ------------- [싫어하는 음식 선택 컴포 관련 코드: 홍인석] -------------
@@ -60,11 +69,12 @@ export default function App() {
   ]);
 
   const handleDislike = (menuName) => {
-    if (!menuName) return;                                                                // 빈 값이면 아무 것도 안 함
-    const exists = disFood.some((item) => item.food === menuName);                        // 중복 체크
-    if (exists) return;                                                                   // 중복 값이면 아무 것도 안 함
-    const nextId = disFood.length === 0 ? 0 : Math.max(...disFood.map((v) => v.id)) + 1;  // 새 id 생성
-    setDisFood([...disFood, { id: nextId, food: menuName }]);                             // 상태 업데이트
+    if (!menuName) return; // 빈 값이면 아무 것도 안 함
+    const exists = disFood.some((item) => item.food === menuName); // 중복 체크
+    if (exists) return; // 중복 값이면 아무 것도 안 함
+    const nextId =
+      disFood.length === 0 ? 0 : Math.max(...disFood.map((v) => v.id)) + 1; // 새 id 생성
+    setDisFood([...disFood, { id: nextId, food: menuName }]); // 상태 업데이트
   };
 
   return (
@@ -77,9 +87,19 @@ export default function App() {
         setCategory={setCategory}
         setSituation={setSituation}
       />
-      <RcmdBtn tempList={tempList} handleTempList={handleTempList} MENUS={MENUS}/>
-      <MenuCard menus={menus} menu={menu} randomMenu={randomMenu} handleDislike={handleDislike}/>
-      <DisLike disFood={disFood} setDisFood={setDisFood}/>
+      <RcmdBtn
+        tempList={tempList}
+        handleTempList={handleTempList}
+        MENUS={MENUS}
+        onRecommend={handleRecommend}
+      />
+
+      <MenuCard
+        menu={menu}
+        randomMenu={randomMenu}
+        handleDislike={handleDislike}
+      />
+      <DisLike disFood={disFood} setDisFood={setDisFood} />
     </div>
   );
 }

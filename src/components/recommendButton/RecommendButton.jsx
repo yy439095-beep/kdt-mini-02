@@ -2,7 +2,7 @@
 import React from "react";
 import "./RecommendButton.css";
 
-export default function RecommendButton({ handleTempList, MENUS }) {
+export default function RecommendButton({ handleTempList, MENUS, onRecommend }) {
   const handleClick = () => {
     if (typeof handleTempList !== "function") return;
 
@@ -39,7 +39,7 @@ export default function RecommendButton({ handleTempList, MENUS }) {
     const top = scored.slice(0, 6); // 후보 풀
     const shuffled = [...top].sort(() => Math.random() - 0.5);
     const recommended = shuffled.slice(0, 2);
-
+    onRecommend && onRecommend(recommended);
     console.log("❌ 제외된 메뉴:", disFood);
     console.log("✅ 추천 메뉴:", recommended.map(m => m.name));
   };
